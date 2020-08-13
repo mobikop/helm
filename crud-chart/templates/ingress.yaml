@@ -1,0 +1,15 @@
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  name: {{ include "crud-chart.fullname" . }}-ingress
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /$2
+spec:
+  rules:
+  - host: arch.work
+    http:
+      paths:
+        - path: /app/viacheslav-kopchenin($|/)(.*)
+          backend:
+            serviceName: {{ include "crud-chart.fullname" . }}-service
+            servicePort: {{ .Values.service.port }}

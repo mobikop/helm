@@ -1,0 +1,162 @@
+{
+	"info": {
+		"_postman_id": "1a2a77f9-c6ab-42e2-a132-4ab08fed5fea",
+		"name": "User Crud API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "create user",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"login\": \"vk\",\n  \"firstName\": \"Viacheslav\",\n  \"lastName\": \"Kopchenin\",\n  \"email\": \"vk@com\",\n  \"phone\": \"+911\"\n}"
+				},
+				"url": {
+					"raw": "http://{{baseUrl}}/app/viacheslav-kopchenin/user",
+					"protocol": "http",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"app",
+						"viacheslav-kopchenin",
+						"user"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get user",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://{{baseUrl}}/app/viacheslav-kopchenin/user/{{userId}}",
+					"protocol": "http",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"app",
+						"viacheslav-kopchenin",
+						"user",
+						"{{userId}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update user",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"login\": \"otus\",\n  \"firstName\": \"Otus\",\n  \"lastName\": \"Group\",\n  \"email\": \"otus@com\",\n  \"phone\": \"+112\"\n}"
+				},
+				"url": {
+					"raw": "http://{{baseUrl}}/app/viacheslav-kopchenin/user/{{userId}}",
+					"protocol": "http",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"app",
+						"viacheslav-kopchenin",
+						"user",
+						"{{userId}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete user",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"url": {
+					"raw": "http://{{baseUrl}}/app/viacheslav-kopchenin/user/{{userId}}",
+					"protocol": "http",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"app",
+						"viacheslav-kopchenin",
+						"user",
+						"{{userId}}"
+					],
+					"query": [
+						{
+							"key": "",
+							"value": null,
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "69bc4c93-c651-4e6c-abde-bc4afd823185",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "10a39267-83ff-4d5d-ba22-ed7fa7198aad",
+				"type": "text/javascript",
+				"exec": [
+					"var responseJSON = JSON.parse(responseBody)",
+					"pm.collectionVariables.set(\"userId\", responseJSON[\"id\"])"
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"id": "431171e7-2454-48a4-8069-002e38f75b22",
+			"key": "userId",
+			"value": "{userId}"
+		},
+		{
+			"id": "904af7c2-aff9-4ef3-b732-6d84d1d2f775",
+			"key": "baseUrl",
+			"value": "arch.work"
+		}
+	],
+	"protocolProfileBehavior": {}
+}
